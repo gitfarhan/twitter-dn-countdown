@@ -5,6 +5,9 @@
 # pull official base image
 FROM python:3.8.1-slim-buster as builder
 
+# create directory for the app user
+RUN mkdir -p /home/app
+
 # set work directory
 WORKDIR /home/app
 
@@ -34,15 +37,11 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /home/app/wheels -r requireme
 # pull official base image
 FROM python:3.8.1-slim-buster
 
-# create directory for the app user
-RUN mkdir -p /home/app
-
 # create the app user
 RUN adduser app
 
 # create the appropriate directories
 ENV APP_HOME=/home/app/
-RUN mkdir $APP_HOME
 ENV PYTHONIOENCODING=utf8
 WORKDIR $APP_HOME
 
