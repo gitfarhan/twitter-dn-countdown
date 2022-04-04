@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+  countdown:
+    build: .
+    restart: always
+    command: python3 /home/app/countdown.py
+    volumes:
+      - ./:/home/app/
+    env_file:
+      - .env
