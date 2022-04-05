@@ -6,9 +6,9 @@ from retry import retry
 
 class CountDown:
 
-    def __init__(self, end_date, menuju):
+    def __init__(self, end_date, until):
         self.end_date = end_date
-        self.menuju = menuju
+        self.until = until
 
     def _get_countdown(self): 
 
@@ -30,7 +30,7 @@ class CountDown:
 
         days, hours, mins = dhms_from_seconds(date_diff_in_seconds(date1, date2))
 
-        message = f"{days}days, {hours}hours, {mins}mins until {self.menuju}."
+        message = f"{days}days, {hours}hours, {mins}mins until {self.until}."
         return message
 
     @retry(tries=3, delay=5)
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     print(f"scheduler countdown is now running")
 
     def job():
-        CountDown(end_date="2022-05-03", menuju="lebaran").main_task()
+        CountDown(end_date="2022-05-03", until="lebaran").main_task()
 
     schedule.every().minute.at(":00").do(job)
 
