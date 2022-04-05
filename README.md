@@ -1,7 +1,7 @@
 ## COUNTDOWN IN TWITTER DISPLAYNAME
 - python 3.8
-- docker 20.10
-- docker-compose 1.29
+- docker 20.10 (optional)
+- docker-compose 1.29 (optional)
 
 ## How to use
 - clone this repo.
